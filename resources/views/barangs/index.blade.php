@@ -7,7 +7,7 @@
             </div>
             <div class="float-right my-3">
                 <div class="row ">
-                    <div class="col-sm-auto"><a class="btn btn-success" href="{{ route('barang.create') }}"> Input Mahasiswa</a></div>
+                    <div class="col-sm-auto"><a class="btn btn-success" href="{{ route('barang.create') }}"> Input Barang</a></div>
                 </div>    
             </div>
             <div>

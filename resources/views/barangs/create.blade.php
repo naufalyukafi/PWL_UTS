@@ -41,7 +41,7 @@
         </div>
         <div class="form-group">
             <label for="qty">QTY</label>
-            <input type="qty" name="qty" class="form-control" id="qty" aria-describedby="qty" >
+            <input type="number" name="qty" class="form-control" id="qty" aria-describedby="qty" >
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
