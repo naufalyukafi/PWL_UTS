@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label for="kategoriBarang">Kategori Barang</label>
-                <input type="text" name="kategoriBarang" class="form-control" id="kategoriBarang" value={{$Barang->kategoriBarang}} ariadescribedby="kategoriBarang" disabled >
+                <input type="text" name="kategoriBarang" class="form-control" id="kategoriBarang" value={{$Barang->kategoriBarang}} ariadescribedby="kategoriBarang">
             </div>
             <div class="form-group">
                 <label for="harga">Harga</label>
