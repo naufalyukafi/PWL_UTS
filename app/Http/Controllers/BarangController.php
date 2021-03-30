@@ -14,7 +14,13 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $posts = Barang::orderBy('id', 'asc')->paginate(5);
+        $search = request()->query('search');
+        if($search) {
+            // dd(request()->query('search'));
+            $posts = Barang::where('namaBarang', 'LIKE', "%{$search}%")->paginate(3);
+        } else {
+            $posts = Barang::orderBy('id', 'desc')->paginate(5);
+        }
         return view("barangs.index", compact('posts'));
         with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -39,14 +45,14 @@ class BarangController extends Controller
     {
         //melakukan validasi data
         $request->validate([
-            'kode_barang' => 'required',
-            'nama_barang' => 'required',
-            'kategori_barang' => 'required',
+            'kodeBarang' => 'required',
+            'namaBarang' => 'required',
+            'kategoriBarang' => 'required',
             'harga'=> 'required',
             'qty' => 'required'
         ]);
         // fungsi eloquent untuk menambahkan data
-        Mahasiswa::create($request->all());
+        Barang::create($request->all());
 
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
         return redirect()->route('barang.index')
@@ -89,14 +95,14 @@ class BarangController extends Controller
     {
         //melakukan validasi data
         $request->validate([
-            'kode_barang' => 'required',
-            'nama_barang' => 'required',
-            'kategori_barang' => 'required',
+            'kodeBarang' => 'required',
+            'namaBarang' => 'required',
+            'kategoriBarang' => 'required',
             'harga'=> 'required',
             'qty' => 'required'
         ]);
         //fungsi eloquent untuk mengupdate data inputan kita
-        Mahasiswa::find($id)->update($request->all());
+        Barang::find($id)->update($request->all());
 
         //jika data berhasil diupdate, akan kembali ke halaman utama
         return redirect()->route('barang.index')
@@ -113,6 +119,6 @@ class BarangController extends Controller
     {
         Barang::find($id)->delete();
         return redirect()->route('barang.index')
-            ->with('success', 'Mahasiswa Berhasil Dihapus');
+            ->with('success', 'Barang Berhasil Dihapus');
     }
 }
