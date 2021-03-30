@@ -27,7 +27,13 @@
         </div>
         <div class="form-group">
             <label for="kategoriBarang">Kategori Barang</label>
-            <input type="text" name="kategoriBarang" class="form-control" id="kategoriBarang" ariadescribedby="kategoriBarang" >
+            <select name="kategoriBarang" class="form-control select2">
+                <option {{old('kategoriBarang')=="Makanan"? 'selected':''}}  value="Makanan">Makanan</option>  
+                <option {{old('kategoriBarang')=="Snack"? 'selected':''}} value="Snack">Snack</option>
+                <option {{old('kategoriBarang')=="Minuman"? 'selected':''}} value="Minuman">Minuman</option>
+                <option {{old('kategoriBarang')=="ATK"? 'selected':''}} value="ATK">ATK</option>
+            </select>
+            {{-- <input type="text" name="kategoriBarang" class="form-control" id="kategoriBarang" ariadescribedby="kategoriBarang" > --}}
         </div>
         <div class="form-group">
             <label for="harga">Harga</label>
