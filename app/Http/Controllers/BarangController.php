@@ -17,7 +17,12 @@ class BarangController extends Controller
         $search = request()->query('search');
         if($search) {
             // dd(request()->query('search'));
-            $posts = Barang::where('namaBarang', 'LIKE', "%{$search}%")->paginate(3);
+            $posts = Barang::Where('namaBarang', 'LIKE', "%{$search}%")
+                    ->orWhere('kodeBarang', 'LIKE', "%{$search}%")
+                    ->orWhere('kategoriBarang', 'LIKE', "%{$search}%")
+                    ->orderBy('id','desc')
+                    ->paginate(5);
+            $posts->appends(['keyword' => 'search']);
         } else {
             $posts = Barang::orderBy('id', 'desc')->paginate(5);
         }
